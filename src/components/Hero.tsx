@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, CheckCircle } from "lucide-react";
+import Lottie from "lottie-react";
 
 const Hero = () => {
   return (
@@ -76,10 +77,70 @@ const Hero = () => {
           {/* Visual Element */}
           <div className="relative lg:block hidden">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-large">
+              {/* Animated Canada Map */}
+              <div className="mb-6">
+                <Lottie 
+                  animationData={{
+                    "v": "5.7.4",
+                    "fr": 30,
+                    "ip": 0,
+                    "op": 120,
+                    "w": 400,
+                    "h": 300,
+                    "nm": "Canada Animation",
+                    "ddd": 0,
+                    "assets": [],
+                    "layers": [
+                      {
+                        "ddd": 0,
+                        "ind": 1,
+                        "ty": 4,
+                        "nm": "Maple Leaf",
+                        "sr": 1,
+                        "ks": {
+                          "o": {"a": 0, "k": 100},
+                          "r": {"a": 1, "k": [{"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 0, "s": [0]}, {"t": 119, "s": [360]}]},
+                          "p": {"a": 0, "k": [200, 150]},
+                          "a": {"a": 0, "k": [0, 0]},
+                          "s": {"a": 1, "k": [{"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 0, "s": [0, 0]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 30, "s": [100, 100]}, {"t": 119, "s": [100, 100]}]}
+                        },
+                        "ao": 0,
+                        "shapes": [
+                          {
+                            "ty": "gr",
+                            "it": [
+                              {
+                                "ind": 0,
+                                "ty": "sh",
+                                "ks": {
+                                  "a": 0,
+                                  "k": {
+                                    "i": [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+                                    "o": [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
+                                    "v": [[0, -30], [15, -15], [30, -20], [25, 0], [35, 15], [0, 10], [-35, 15], [-25, 0], [-30, -20], [-15, -15]],
+                                    "c": true
+                                  }
+                                }
+                              },
+                              {
+                                "ty": "fl",
+                                "c": {"a": 0, "k": [1, 1, 1, 1]},
+                                "o": {"a": 0, "k": 100}
+                              }
+                            ]
+                          }
+                        ],
+                        "ip": 0,
+                        "op": 120,
+                        "st": 0
+                      }
+                    ]
+                  }}
+                  className="w-24 h-24 mx-auto mb-4"
+                  loop={true}
+                />
+              </div>
               <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4">
-                  <div className="w-8 h-8 bg-white rounded-full"></div>
-                </div>
                 <h3 className="text-2xl font-poppins font-semibold text-white mb-2">
                   Ali Anwar
                 </h3>

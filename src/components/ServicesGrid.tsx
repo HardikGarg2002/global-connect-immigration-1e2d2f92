@@ -14,6 +14,7 @@ import {
   Building, 
   Wrench 
 } from "lucide-react";
+import Lottie from "lottie-react";
 
 const ServicesGrid = () => {
   const services = [
@@ -108,10 +109,17 @@ const ServicesGrid = () => {
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <Card key={index} className="group hover:shadow-red transition-all duration-300 border-0 shadow-soft">
-                <CardHeader className="text-center pb-4">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-canada-red/10 rounded-full mb-4 mx-auto group-hover:bg-canada-red group-hover:text-white transition-all duration-300">
+              <Card key={index} className="group hover:shadow-red transition-all duration-300 border-0 shadow-soft relative overflow-hidden hover:scale-105">
+                <CardHeader className="text-center pb-4 relative z-10">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-canada-red/10 rounded-full mb-4 mx-auto group-hover:bg-canada-red group-hover:text-white transition-all duration-300 group-hover:scale-110">
                     <IconComponent className="h-8 w-8 text-canada-red group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  {/* Animated sparkles on hover */}
+                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-1 h-1 bg-canada-red/60 rounded-full animate-ping"></div>
+                  </div>
+                  <div className="absolute top-4 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ animationDelay: '0.2s' }}>
+                    <div className="w-1 h-1 bg-canada-red/40 rounded-full animate-ping"></div>
                   </div>
                   <CardTitle className="text-lg font-poppins text-foreground group-hover:text-canada-red transition-colors duration-300">
                     {service.name}

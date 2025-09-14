@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import Lottie from "lottie-react";
 
 const Testimonials = () => {
   const testimonials = [
@@ -30,6 +31,18 @@ const Testimonials = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
+          <div className="flex justify-center mb-6">
+            {/* Animated stars */}
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star 
+                  key={i} 
+                  className="h-8 w-8 fill-canada-red text-canada-red animate-pulse" 
+                  style={{ animationDelay: `${i * 0.2}s`, animationDuration: '2s' }}
+                />
+              ))}
+            </div>
+          </div>
           <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-foreground mb-6">
             Client Success Stories
           </h2>
@@ -41,8 +54,12 @@ const Testimonials = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="shadow-medium border-0 hover:shadow-red transition-all duration-300">
-              <CardContent className="p-6">
+            <Card key={index} className="shadow-medium border-0 hover:shadow-red transition-all duration-300 group hover:scale-105 relative overflow-hidden">
+              <CardContent className="p-6 relative z-10">
+                {/* Floating success indicator */}
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-3 h-3 bg-success-green/30 rounded-full animate-pulse"></div>
+                </div>
                 {/* Stars */}
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (

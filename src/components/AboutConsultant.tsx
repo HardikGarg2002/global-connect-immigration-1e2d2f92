@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Award, Users, Clock } from "lucide-react";
+import Lottie from "lottie-react";
 
 const AboutConsultant = () => {
   return (
@@ -48,12 +49,75 @@ const AboutConsultant = () => {
 
             {/* Stats */}
             <div className="grid sm:grid-cols-3 gap-6 mb-8">
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-canada-red/10 rounded-full mb-3">
+              <div className="text-center group cursor-pointer">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-canada-red/10 rounded-full mb-3 group-hover:bg-canada-red/20 transition-all duration-300 group-hover:scale-110">
                   <Clock className="h-6 w-6 text-canada-red" />
                 </div>
                 <div className="text-2xl font-poppins font-bold text-canada-red">20+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
+                {/* Animated counter effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Lottie 
+                    animationData={{
+                      "v": "5.7.4",
+                      "fr": 30,
+                      "ip": 0,
+                      "op": 60,
+                      "w": 100,
+                      "h": 100,
+                      "nm": "Counter Animation",
+                      "ddd": 0,
+                      "assets": [],
+                      "layers": [
+                        {
+                          "ddd": 0,
+                          "ind": 1,
+                          "ty": 4,
+                          "nm": "Numbers",
+                          "sr": 1,
+                          "ks": {
+                            "o": {"a": 1, "k": [{"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 0, "s": [0]}, {"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 20, "s": [100]}, {"t": 59, "s": [100]}]},
+                            "r": {"a": 0, "k": 0},
+                            "p": {"a": 0, "k": [50, 50]},
+                            "a": {"a": 0, "k": [0, 0]},
+                            "s": {"a": 1, "k": [{"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 0, "s": [80, 80]}, {"t": 59, "s": [120, 120]}]}
+                          },
+                          "ao": 0,
+                          "shapes": [
+                            {
+                              "ty": "gr",
+                              "it": [
+                                {
+                                  "ind": 0,
+                                  "ty": "sh",
+                                  "ks": {
+                                    "a": 0,
+                                    "k": {
+                                      "i": [[0, 0], [0, 0], [0, 0], [0, 0]],
+                                      "o": [[0, 0], [0, 0], [0, 0], [0, 0]],
+                                      "v": [[-10, -5], [10, -5], [10, 5], [-10, 5]],
+                                      "c": true
+                                    }
+                                  }
+                                },
+                                {
+                                  "ty": "fl",
+                                  "c": {"a": 0, "k": [0.827, 0.184, 0.184, 0.3]},
+                                  "o": {"a": 0, "k": 100}
+                                }
+                              ]
+                            }
+                          ],
+                          "ip": 0,
+                          "op": 60,
+                          "st": 0
+                        }
+                      ]
+                    }}
+                    className="w-20 h-20 absolute -top-2 left-1/2 transform -translate-x-1/2"
+                    loop={false}
+                  />
+                </div>
               </div>
               <div className="text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-canada-red/10 rounded-full mb-3">
