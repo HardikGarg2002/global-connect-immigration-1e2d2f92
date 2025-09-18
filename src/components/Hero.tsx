@@ -51,7 +51,7 @@ const Hero = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-canada-red font-semibold px-8"
+                  className="w-full sm:w-auto border-white bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent hover:bg-white hover:text-canada-red font-semibold px-8"
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
                   Chat on WhatsApp
