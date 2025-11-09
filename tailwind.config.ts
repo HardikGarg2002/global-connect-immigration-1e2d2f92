@@ -50,12 +50,11 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         // Custom immigration theme colors
-        "orange-primary": "hsl(var(--orange-primary))",
-        "orange-light": "hsl(var(--orange-light))",
-        "dark-green": "hsl(var(--dark-green))",
-        "dark-green-foreground": "hsl(var(--dark-green-foreground))",
-        "terracotta": "hsl(var(--terracotta))",
-        "beige-light": "hsl(var(--beige-light))",
+        "canada-red": "hsl(var(--canada-red))",
+        "canada-red-light": "hsl(var(--canada-red-light))",
+        "professional-gray": "hsl(var(--professional-gray))",
+        "light-gray": "hsl(var(--light-gray))",
+        "success-green": "hsl(var(--success-green))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
