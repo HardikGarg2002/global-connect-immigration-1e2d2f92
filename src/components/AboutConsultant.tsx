@@ -5,9 +5,9 @@ import Lottie from "lottie-react";
 
 const AboutConsultant = () => {
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="py-12 sm:py-16 lg:py-20 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
           {/* Image */}
           <div className="relative">
             <div className="bg-gradient-primary rounded-2xl p-1 shadow-large">
@@ -37,18 +37,18 @@ const AboutConsultant = () => {
 
           {/* Content */}
           <div>
-            <h2 className="text-4xl lg:text-5xl font-poppins font-bold text-foreground mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-bold text-foreground mb-4 sm:mb-6">
               Meet Your Immigration Expert
             </h2>
             
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
               RCIC licensed consultant with 20+ years of experience helping individuals and families 
               successfully navigate the Canadian immigration system. Ali Anwar is committed to providing 
               honest, transparent advice with personalized attention to every client.
             </p>
 
             {/* Stats */}
-            <div className="grid sm:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 mb-6 sm:mb-8">
               <div className="text-center group cursor-pointer">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-canada-red/10 rounded-full mb-3 group-hover:bg-canada-red/20 transition-all duration-300 group-hover:scale-110">
                   <Clock className="h-6 w-6 text-canada-red" />
