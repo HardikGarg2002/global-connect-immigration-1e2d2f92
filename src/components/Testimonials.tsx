@@ -1,6 +1,14 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import Lottie from "lottie-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const Testimonials = () => {
   const testimonials = [
@@ -52,42 +60,59 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="shadow-medium border-0 hover:shadow-red transition-all duration-300 group hover:scale-105 relative overflow-hidden">
-              <CardContent className="p-6 relative z-10">
-                {/* Floating success indicator */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-3 h-3 bg-success-green/30 rounded-full animate-pulse"></div>
-                </div>
-                {/* Stars */}
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-canada-red text-canada-red" />
-                  ))}
-                </div>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          plugins={[
+            Autoplay({
+              delay: 5000,
+            }),
+          ]}
+          className="w-full max-w-6xl mx-auto"
+        >
+          <CarouselContent>
+            {testimonials.map((testimonial, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <Card className="shadow-medium border-0 hover:shadow-red transition-all duration-300 group hover:scale-105 relative overflow-hidden h-full">
+                  <CardContent className="p-6 relative z-10">
+                    {/* Floating success indicator */}
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-3 h-3 bg-success-green/30 rounded-full animate-pulse"></div>
+                    </div>
+                    {/* Stars */}
+                    <div className="flex items-center gap-1 mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 fill-canada-red text-canada-red" />
+                      ))}
+                    </div>
 
-                {/* Review Text */}
-                <p className="text-muted-foreground mb-6 italic leading-relaxed">
-                  "{testimonial.text}"
-                </p>
+                    {/* Review Text */}
+                    <p className="text-muted-foreground mb-6 italic leading-relaxed">
+                      "{testimonial.text}"
+                    </p>
 
-                {/* Client Info */}
-                <div className="border-t pt-4">
-                  <div className="font-semibold text-foreground font-poppins">
-                    {testimonial.name}
-                  </div>
-                  <div className="text-sm text-canada-red font-medium">
-                    {testimonial.service}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {testimonial.location}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                    {/* Client Info */}
+                    <div className="border-t pt-4">
+                      <div className="font-semibold text-foreground font-poppins">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-sm text-canada-red font-medium">
+                        {testimonial.service}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {testimonial.location}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex" />
+          <CarouselNext className="hidden md:flex" />
+        </Carousel>
 
         {/* CTA */}
         <div className="text-center mt-12">
