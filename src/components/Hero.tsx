@@ -50,11 +50,26 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center gradient-hero overflow-hidden py-12 sm:py-20">
+    <section className="relative min-h-screen flex items-center overflow-hidden py-12 sm:py-20">
+      {/* Video Background */}
+      <div className="absolute inset-0">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/canadian-skylines.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-canada-red/40 via-black/50 to-canada-red/30"></div>
+      </div>
+
       {/* Advanced Background Effects */}
       <div className="absolute inset-0">
         {/* Animated mesh gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-canada-red/20 via-transparent to-canada-red/10 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-canada-red/10 via-transparent to-canada-red/5"></div>
         
         {/* Floating particles - hidden on mobile */}
         <div className="absolute inset-0 hidden sm:block">
