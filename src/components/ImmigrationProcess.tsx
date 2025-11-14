@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { ClipboardCheck, MessageSquare, FileText, Send, CheckCircle } from "lucide-react";
+import {
+  ClipboardCheck,
+  MessageSquare,
+  FileText,
+  Send,
+  CheckCircle,
+} from "lucide-react";
 
 const ImmigrationProcess = () => {
   const [activeSteps, setActiveSteps] = useState<number[]>([]);
@@ -10,44 +16,49 @@ const ImmigrationProcess = () => {
     {
       number: 1,
       title: "Assessment",
-      description: "We evaluate your eligibility and immigration options based on your unique situation and goals.",
+      description:
+        "We evaluate your eligibility and immigration options based on your unique situation and goals.",
       icon: ClipboardCheck,
-      color: "text-canada-red"
+      color: "text-canada-red",
     },
     {
       number: 2,
       title: "Consultation",
-      description: "One-on-one meeting to discuss your pathway, timeline, and answer all your questions.",
+      description:
+        "One-on-one meeting to discuss your pathway, timeline, and answer all your questions.",
       icon: MessageSquare,
-      color: "text-canada-red"
+      color: "text-canada-red",
     },
     {
       number: 3,
       title: "Documentation",
-      description: "We help you gather and prepare all required documents with meticulous attention to detail.",
+      description:
+        "We help you gather and prepare all required documents with meticulous attention to detail.",
       icon: FileText,
-      color: "text-canada-red"
+      color: "text-canada-red",
     },
     {
       number: 4,
       title: "Submission",
-      description: "Your application is carefully reviewed and submitted to immigration authorities.",
+      description:
+        "Your application is carefully reviewed and submitted to immigration authorities.",
       icon: Send,
-      color: "text-canada-red"
+      color: "text-canada-red",
     },
     {
       number: 5,
       title: "Approval",
-      description: "Celebrate your success! We guide you through the final steps of your immigration journey.",
+      description:
+        "Celebrate your success! We guide you through the final steps of your immigration journey.",
       icon: CheckCircle,
-      color: "text-canada-red"
-    }
+      color: "text-canada-red",
+    },
   ];
 
   useEffect(() => {
     const observers = stepRefs.current.map((ref, index) => {
       if (!ref) return null;
-      
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -87,7 +98,8 @@ const ImmigrationProcess = () => {
             Your Immigration Journey
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A clear, step-by-step process designed to make your Canadian dream a reality
+            A clear, step-by-step process designed to make your Canadian dream a
+            reality
           </p>
         </div>
 
@@ -95,9 +107,9 @@ const ImmigrationProcess = () => {
           {/* Vertical Timeline Line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-border hidden sm:block">
             {/* Animated progress line */}
-            <div 
+            <div
               className="absolute top-0 left-0 w-full bg-gradient-to-b from-canada-red via-canada-red-light to-canada-red transition-all duration-1000 ease-out"
-              style={{ 
+              style={{
                 height: `${(activeSteps.length / steps.length) * 100}%`,
               }}
             ></div>
@@ -115,21 +127,33 @@ const ImmigrationProcess = () => {
                   key={index}
                   ref={(el) => (stepRefs.current[index] = el)}
                   className={`relative flex items-center ${
-                    isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+                    isEven ? "md:flex-row" : "md:flex-row-reverse"
                   } flex-col md:gap-8`}
                 >
                   {/* Content Card */}
-                  <div className={`w-full md:w-5/12 ${isEven ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}>
-                    <Card 
+                  <div
+                    className={`w-full md:w-5/12 ${
+                      isEven ? "md:text-right md:pr-8" : "md:text-left md:pl-8"
+                    }`}
+                  >
+                    <Card
                       className={`transition-all duration-700 transform ${
-                        isActive 
-                          ? 'opacity-100 translate-y-0 shadow-red scale-100' 
-                          : 'opacity-30 translate-y-8 scale-95'
+                        isActive
+                          ? "opacity-100 translate-y-0 shadow-red scale-100"
+                          : "opacity-30 translate-y-8 scale-95"
                       } border-0`}
                     >
                       <CardContent className="p-6">
-                        <div className={`flex items-center gap-3 mb-3 ${isEven ? 'md:justify-end' : 'md:justify-start'} justify-start`}>
-                          <div className={`p-3 rounded-full bg-canada-red/10 ${isActive ? 'animate-pulse' : ''}`}>
+                        <div
+                          className={`flex items-center gap-3 mb-3 ${
+                            isEven ? "md:justify-end" : "md:justify-start"
+                          } justify-start`}
+                        >
+                          <div
+                            className={`p-3 rounded-full bg-canada-red/10 ${
+                              isActive ? "animate-pulse" : ""
+                            }`}
+                          >
                             <Icon className={`h-6 w-6 ${step.color}`} />
                           </div>
                           <h3 className="text-2xl font-poppins font-bold text-foreground">
@@ -145,11 +169,11 @@ const ImmigrationProcess = () => {
 
                   {/* Center Circle Indicator */}
                   <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 z-20 my-4 md:my-0">
-                    <div 
+                    <div
                       className={`w-16 h-16 rounded-full border-4 flex items-center justify-center font-bold text-xl transition-all duration-700 ${
-                        isActive 
-                          ? 'bg-canada-red border-canada-red text-white shadow-red scale-110' 
-                          : 'bg-background border-border text-muted-foreground scale-100'
+                        isActive
+                          ? "bg-canada-red border-canada-red text-white shadow-red scale-110"
+                          : "bg-background border-border text-muted-foreground scale-100"
                       }`}
                     >
                       {step.number}

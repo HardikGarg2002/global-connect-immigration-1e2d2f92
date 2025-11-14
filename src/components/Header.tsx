@@ -1,17 +1,14 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Phone, MessageCircle } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
+import MobileHeaderSheet from "./header/MobileHeaderSheet";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const navigation = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
-    { 
-      label: "Services", 
-      href: "#", 
+    {
+      label: "Services",
+      href: "#",
       dropdown: [
         { label: "Express Entry", href: "/services/express-entry" },
         { label: "Provincial Nominee Programs", href: "/services/pnp" },
@@ -25,7 +22,7 @@ const Header = () => {
         { label: "Business Immigration", href: "/services/business" },
         { label: "Live-in Caregiver", href: "/services/caregiver" },
         { label: "Skilled Trades & CEC", href: "/services/skilled-trades" },
-      ]
+      ],
     },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
@@ -39,7 +36,9 @@ const Header = () => {
           <div className="flex items-center">
             <div className="text-2xl font-poppins font-bold text-canada-red">
               Global Connect
-              <span className="block text-sm font-medium text-professional-gray">Immigration</span>
+              <span className="block text-sm font-medium text-professional-gray">
+                Immigration
+              </span>
             </div>
           </div>
 
@@ -75,13 +74,21 @@ const Header = () => {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
             <a href="tel:6044951927">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-2"
+              >
                 <Phone className="h-4 w-4" />
                 Call Now
               </Button>
             </a>
             <a href="https://wa.me/16047254814?text=Hi, I'm interested in your immigration services.">
-              <Button variant="default" size="sm" className="flex items-center gap-2 bg-green-600 hover:bg-green-700">
+              <Button
+                variant="default"
+                size="sm"
+                className="flex items-center gap-2 bg-green-600 hover:bg-green-700"
+              >
                 <MessageCircle className="h-4 w-4" />
                 WhatsApp
               </Button>
@@ -92,63 +99,7 @@ const Header = () => {
               </Button>
             </a>
           </div>
-
-          {/* Mobile Menu */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="sm">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <nav className="flex flex-col space-y-4 mt-8">
-                {navigation.map((item) => (
-                  <div key={item.label}>
-                    <a
-                      href={item.href}
-                      className="text-lg font-medium text-foreground hover:text-canada-red transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.label}
-                    </a>
-                    {item.dropdown && (
-                      <div className="ml-4 mt-2 space-y-2">
-                        {item.dropdown.map((dropdownItem) => (
-                          <a
-                            key={dropdownItem.label}
-                            href={dropdownItem.href}
-                            className="block text-sm text-muted-foreground hover:text-canada-red transition-colors"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {dropdownItem.label}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-                <div className="pt-4 space-y-3">
-                  <a href="tel:6044951927">
-                    <Button variant="outline" className="w-full flex items-center gap-2">
-                      <Phone className="h-4 w-4" />
-                      Call Now
-                    </Button>
-                  </a>
-                  <a href="https://wa.me/16047254814?text=Hi, I'm interested in your immigration services.">
-                    <Button className="w-full bg-green-600 hover:bg-green-700 flex items-center gap-2">
-                      <MessageCircle className="h-4 w-4" />
-                      WhatsApp
-                    </Button>
-                  </a>
-                  <a href="/contact">
-                    <Button className="w-full gradient-primary">
-                      Book Consultation
-                    </Button>
-                  </a>
-                </div>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          <MobileHeaderSheet navigation={navigation} />
         </div>
       </div>
     </header>

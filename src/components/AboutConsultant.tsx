@@ -12,11 +12,15 @@ const AboutConsultant = () => {
           <div className="relative">
             <div className="bg-gradient-primary rounded-2xl p-1 shadow-large">
               <div className="bg-white rounded-xl p-8 text-center">
-                <div className="w-32 h-32 mx-auto mb-6 bg-canada-red/10 rounded-full flex items-center justify-center">
-                  <div className="w-24 h-24 bg-canada-red rounded-full flex items-center justify-center">
-                    <span className="text-white font-poppins font-bold text-2xl">AA</span>
-                  </div>
+                <div className="w-32 h-32 mx-auto mb-6 rounded-2xl overflow-hidden shadow-md">
+                  <img
+                    src="/images/AliAnwar.jpg"
+                    alt="Portrait of Ali Anwar"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
+
                 <h3 className="text-2xl font-poppins font-bold text-foreground mb-2">
                   Ali Anwar
                 </h3>
