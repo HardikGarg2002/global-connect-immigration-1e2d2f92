@@ -46,7 +46,7 @@ const FloatingElement = ({ children, delay = 0, className = "" }: { children: Re
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [animationData, setAnimationData] = useState<any>(null);
+  const [animationData, setAnimationData] = useState<unknown>(null);
 
   useEffect(() => {
     setIsVisible(true);
