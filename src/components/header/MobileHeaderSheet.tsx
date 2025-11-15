@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Phone, MessageCircle } from "lucide-react";
+import { NavigationItem } from "../Header";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function MobileHeaderSheet(navigation: any[]) {
+export default function MobileHeaderSheet({ navigation }: { navigation: NavigationItem[] }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>

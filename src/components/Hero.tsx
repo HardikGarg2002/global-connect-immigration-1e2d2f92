@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, CheckCircle, Star, Award, Users, TrendingUp } from "lucide-react";
 import Lottie from "lottie-react";
@@ -9,19 +11,19 @@ const CountUp = ({ end, duration = 2000, suffix = "" }: { end: number; duration?
 
   useEffect(() => {
     if (!hasStarted) return;
-    
+
     const startTime = Date.now();
     const animate = () => {
       const now = Date.now();
       const progress = Math.min((now - startTime) / duration, 1);
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       setCount(Math.floor(easeOutQuart * end));
-      
+
       if (progress < 1) {
         requestAnimationFrame(animate);
       }
     };
-    
+
     requestAnimationFrame(animate);
   }, [hasStarted, end, duration]);
 
@@ -34,7 +36,7 @@ const CountUp = ({ end, duration = 2000, suffix = "" }: { end: number; duration?
 };
 
 const FloatingElement = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => (
-  <div 
+  <div
     className={`animate-[float_6s_ease-in-out_infinite] ${className}`}
     style={{ animationDelay: `${delay}s` }}
   >
@@ -44,19 +46,28 @@ const FloatingElement = ({ children, delay = 0, className = "" }: { children: Re
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
     setIsVisible(true);
+
+    // Load Lottie animation from public folder
+    fetch("/lottie/canada mapple.json")
+      .then((response) => response.json())
+      .then((data) => setAnimationData(data))
+      .catch((error) => {
+        console.error("Error loading Lottie animation:", error);
+      });
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden py-12 sm:py-20">
       {/* Video Background */}
       <div className="absolute inset-0">
-        <video 
-          autoPlay 
-          loop 
-          muted 
+        <video
+          autoPlay
+          loop
+          muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
@@ -70,7 +81,7 @@ const Hero = () => {
       <div className="absolute inset-0">
         {/* Animated mesh gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-canada-red/10 via-transparent to-canada-red/5"></div>
-        
+
         {/* Floating particles - hidden on mobile */}
         <div className="absolute inset-0 hidden sm:block">
           {[...Array(6)].map((_, i) => (
@@ -91,12 +102,12 @@ const Hero = () => {
         <FloatingElement delay={0} className="absolute top-20 left-10 w-20 h-20 border border-white/10 rounded-lg rotate-12 hidden lg:block">
           <div className="w-full h-full bg-gradient-to-br from-white/5 to-transparent rounded-lg"></div>
         </FloatingElement>
-        
+
         <FloatingElement delay={2} className="absolute bottom-32 right-20 w-16 h-16 border border-white/10 rounded-full hidden lg:block">
           <div className="w-full h-full bg-gradient-to-br from-white/5 to-transparent rounded-full"></div>
         </FloatingElement>
       </div>
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Enhanced Content */}
@@ -121,9 +132,9 @@ const Hero = () => {
                 Immigration Matters
               </span>
             </h1>
-            
+
             <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-white/90 mb-6 sm:mb-8 leading-relaxed font-medium">
-              Transform your Canadian dream into reality with expert guidance from a 
+              Transform your Canadian dream into reality with expert guidance from a
               <span className="text-white font-semibold"> licensed RCIC consultant</span>.
             </p>
 
@@ -156,7 +167,7 @@ const Hero = () => {
                 { icon: Star, text: "CICC Member" },
                 { icon: TrendingUp, text: "High Success" }
               ].map((item, index) => (
-                <div 
+                <div
                   key={index}
                   className={`flex items-center gap-1.5 sm:gap-2 transition-all duration-300 hover-scale ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
                   style={{ animationDelay: `${index * 0.2}s` }}
@@ -170,8 +181,8 @@ const Hero = () => {
             {/* Premium CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
               <a href="/contact" className="group">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="w-full sm:w-auto bg-white text-canada-red hover:bg-white/90 shadow-xl font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 group-hover:animate-pulse"
                 >
                   <Phone className="h-4 w-4 sm:h-5 sm:w-5 mr-2 transition-transform group-hover:rotate-12" />
@@ -179,9 +190,9 @@ const Hero = () => {
                 </Button>
               </a>
               <a href="https://wa.me/16047254814?text=Hi, I'm interested in your immigration services." className="group">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
+                <Button
+                  size="lg"
+                  variant="outline"
                   className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-canada-red font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 backdrop-blur-sm bg-white/10"
                 >
                   <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-2 transition-transform group-hover:scale-110" />
@@ -218,72 +229,32 @@ const Hero = () => {
             <div className="relative">
               <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500 hover:scale-105">
                 {/* Animated Canada Map */}
-                <div className="mb-8 relative">
+                <div className=" relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-canada-red/20 to-transparent rounded-full blur-xl"></div>
-                  <Lottie 
-                    animationData={{
-                      "v": "5.7.4",
-                      "fr": 30,
-                      "ip": 0,
-                      "op": 120,
-                      "w": 400,
-                      "h": 300,
-                      "nm": "Canada Animation",
-                      "ddd": 0,
-                      "assets": [],
-                      "layers": [
-                        {
-                          "ddd": 0,
-                          "ind": 1,
-                          "ty": 4,
-                          "nm": "Maple Leaf",
-                          "sr": 1,
-                          "ks": {
-                            "o": {"a": 0, "k": 100},
-                            "r": {"a": 1, "k": [{"i": {"x": [0.833], "y": [0.833]}, "o": {"x": [0.167], "y": [0.167]}, "t": 0, "s": [0]}, {"t": 119, "s": [360]}]},
-                            "p": {"a": 0, "k": [200, 150]},
-                            "a": {"a": 0, "k": [0, 0]},
-                            "s": {"a": 1, "k": [{"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 0, "s": [0, 0]}, {"i": {"x": [0.667, 0.667], "y": [1, 1]}, "o": {"x": [0.333, 0.333], "y": [0, 0]}, "t": 30, "s": [100, 100]}, {"t": 119, "s": [100, 100]}]}
-                          },
-                          "ao": 0,
-                          "shapes": [
-                            {
-                              "ty": "gr",
-                              "it": [
-                                {
-                                  "ind": 0,
-                                  "ty": "sh",
-                                  "ks": {
-                                    "a": 0,
-                                    "k": {
-                                      "i": [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-                                      "o": [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-                                      "v": [[0, -30], [15, -15], [30, -20], [25, 0], [35, 15], [0, 10], [-35, 15], [-25, 0], [-30, -20], [-15, -15]],
-                                      "c": true
-                                    }
-                                  }
-                                },
-                                {
-                                  "ty": "fl",
-                                  "c": {"a": 0, "k": [1, 1, 1, 1]},
-                                  "o": {"a": 0, "k": 100}
-                                }
-                              ]
-                            }
-                          ],
-                          "ip": 0,
-                          "op": 120,
-                          "st": 0
-                        }
-                      ]
-                    }}
-                    className="w-28 h-28 mx-auto relative z-10"
-                    loop={true}
-                  />
+                  {animationData ? (
+                    <Lottie
+                      animationData={animationData}
+                      className="w-36 h-36 mx-auto relative z-10"
+                      loop={true}
+                      autoplay={true}
+                    />
+                  ) : (
+                    <div className="w-36 h-36 mx-auto relative z-10 flex items-center justify-center">
+                      <div className="w-16 h-16 border-2 border-white/20 rounded-full animate-spin"></div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Consultant info with premium styling */}
                 <div className="text-center mb-8">
+                  {/* <div className="w-32 h-32 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg border-2 border-white/20">
+                    <img
+                      src="/images/AliAnwar.jpg"
+                      alt="Portrait of Ali Anwar"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div> */}
                   <h3 className="text-3xl font-poppins font-bold bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent mb-2">
                     Ali Anwar
                   </h3>
@@ -295,7 +266,7 @@ const Hero = () => {
                   </div>
                   <p className="text-white/80 text-sm">RCIC • CICC • 20+ Years Experience</p>
                 </div>
-                
+
                 {/* Enhanced feature list */}
                 <div className="space-y-4">
                   {[
@@ -304,7 +275,7 @@ const Hero = () => {
                     { icon: CheckCircle, text: "Transparent Process", color: "text-blue-400" },
                     { icon: TrendingUp, text: "98% Success Rate", color: "text-purple-400" }
                   ].map((item, index) => (
-                    <div 
+                    <div
                       key={index}
                       className={`flex items-center gap-3 text-white/90 p-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover-scale ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
                       style={{ animationDelay: `${1 + index * 0.1}s` }}

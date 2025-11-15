@@ -1,6 +1,7 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
-import Lottie from "lottie-react";
 import {
   Carousel,
   CarouselContent,
@@ -43,9 +44,9 @@ const Testimonials = () => {
             {/* Animated stars */}
             <div className="flex items-center gap-1">
               {[...Array(5)].map((_, i) => (
-                <Star 
-                  key={i} 
-                  className="h-8 w-8 fill-canada-red text-canada-red animate-pulse" 
+                <Star
+                  key={i}
+                  className="h-8 w-8 fill-canada-red text-canada-red animate-pulse"
                   style={{ animationDelay: `${i * 0.2}s`, animationDuration: '2s' }}
                 />
               ))}
@@ -55,7 +56,7 @@ const Testimonials = () => {
             Client Success Stories
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our clients say about their experience 
+            Don't just take our word for it. Here's what our clients say about their experience
             working with Global Connect Immigration.
           </p>
         </div>

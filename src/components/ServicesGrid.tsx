@@ -1,20 +1,19 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  Users, 
-  Zap, 
-  MapPin, 
-  Briefcase, 
-  GraduationCap, 
-  FileText, 
-  Plane, 
-  RefreshCw, 
-  Award, 
-  Heart, 
-  Building, 
-  Wrench 
+import {
+  Users,
+  Zap,
+  MapPin,
+  Briefcase,
+  GraduationCap,
+  FileText,
+  Plane,
+  RefreshCw,
+  Award,
+  Heart,
+  Building,
+  Wrench
 } from "lucide-react";
-import Lottie from "lottie-react";
 
 const ServicesGrid = () => {
   const services = [
@@ -100,7 +99,7 @@ const ServicesGrid = () => {
             Our Immigration Services
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-            Comprehensive immigration solutions tailored to your unique situation. 
+            Comprehensive immigration solutions tailored to your unique situation.
             Our licensed RCIC provides expert guidance for all Canadian immigration programs.
           </p>
         </div>
@@ -130,9 +129,9 @@ const ServicesGrid = () => {
                     {service.description}
                   </CardDescription>
                   <a href={service.link}>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
+                    <Button
+                      variant="outline"
+                      size="sm"
                       className="w-full group-hover:border-canada-red group-hover:text-canada-red transition-colors duration-300"
                     >
                       Learn More

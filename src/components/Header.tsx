@@ -2,14 +2,18 @@ import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
 import MobileHeaderSheet from "./header/MobileHeaderSheet";
 
+export interface NavigationItem {
+  label: string;
+  href: string;
+  dropdown?: { label: string; href: string }[];
+}
+
 const Header = () => {
-  const navigation = [
+  const navigation: NavigationItem[] = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     {
-      label: "Services",
-      href: "#",
-      dropdown: [
+      label: "Services", href: "#", dropdown: [
         { label: "Express Entry", href: "/services/express-entry" },
         { label: "Provincial Nominee Programs", href: "/services/pnp" },
         { label: "Family Sponsorship", href: "/services/sponsorship" },
@@ -22,7 +26,7 @@ const Header = () => {
         { label: "Business Immigration", href: "/services/business" },
         { label: "Live-in Caregiver", href: "/services/caregiver" },
         { label: "Skilled Trades & CEC", href: "/services/skilled-trades" },
-      ],
+      ]
     },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },

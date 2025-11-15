@@ -1,4 +1,3 @@
-"use client";
 import Hero from "@/components/Hero";
 import ServicesGrid from "@/components/ServicesGrid";
 import AboutConsultant from "@/components/AboutConsultant";
